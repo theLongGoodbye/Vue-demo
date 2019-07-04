@@ -5,7 +5,7 @@ var handSize = 5
 var cardUid = 0
 var currentPlayingCard = null
 
-// The consolidated state of our app
+// 应用状态集合
 var state = {
   // World
   worldRatio: getWorldRatio(),
@@ -13,12 +13,13 @@ var state = {
   turn: 1,
   players: [
     {
-      name: 'Anne of Cleves',
+      name: '我',
     },
     {
-      name: 'William the Bald',
+      name: '对手',
     },
   ],
   currentPlayerIndex: Math.round(Math.random()),
   testHand: [],
+  activeOverlay: null,
 }

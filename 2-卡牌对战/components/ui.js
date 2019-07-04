@@ -14,7 +14,8 @@ Vue.component('top-bar', {
 
 Vue.component('card', { 
     props: ['def'], 
-    template: `<div class="card" :class="'type-' + def.type" @click="play"> 
+    template: `<div class="card" :class="'type-' + def.type" 
+        @click="play"> 
     <div class="title">{{ def.title }}</div> 
     <img class="separator" src="svg/card-separator.svg" /> 
     <div class="description"><div v- 
@@ -23,6 +24,7 @@ Vue.component('card', {
     </div>`, 
     methods: { 
         play() { 
+        console.log(11111)
         this.$emit('play') 
         }, 
     },
@@ -32,8 +34,15 @@ Vue.component('hand', {
     template: `<div class="hand"> 
     <div class="wrapper"> 
     <!-- 卡牌 --> 
-    <card v-for="(card, index) of cards" :def="card.def" :key="index"/>
+    <card v-for="(card, index) of cards" :def="card.def" :key="index" 
+        />
     </div> 
     </div>`,
     props: ['cards'], 
+    methods: { 
+        handlePlay(card) { 
+        this.$emit('card-play', card) 
+        }, 
+    },
+
 })

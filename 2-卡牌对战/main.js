@@ -4,8 +4,10 @@ new Vue({
     template: `<div id="#app"> 
      <top-bar :turn="turn" :current-player-index="currentPlayerIndex" 
 :players="players" />
-    <card :def="testCard" @play="handlePlay"/>
-    <hand :cards="testHand" />
+    <card :def="testCard" @play="handlePlay()"/>
+    <transition name="hand">
+    <hand :cards="testHand" v-if="!activeOverlay"  @card-play="testPlayCard"/>
+    </transition>
      </div>`,
     data: state,
     computed: { 
@@ -41,6 +43,11 @@ new Vue({
             def: cards[randomId], 
             } 
         },
+        testPlayCard(card) { 
+            // 将卡牌从玩家手牌中移除即可
+            const index = this.testHand.indexOf(card) 
+            this.testHand.splice(index, 1) 
+        }
     },
     created() { 
         this.testHand = this.createTestHand() 
