@@ -16,3 +16,4 @@ methods: {
 }
 ```
 
+**自定义 v-model，p139
