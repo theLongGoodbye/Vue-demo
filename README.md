@@ -37,3 +37,16 @@ const routes = [
 <router-link :to="{name:'ticket', params: { id: ticket._id }}"> 
 {{ ticket.title }}</router-link>
 ```
+
+```
+点返回回到滚动位置
+const router = new VueRouter({
+    routes,
+    mode: 'history',
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        }
+    },
+})
+```
