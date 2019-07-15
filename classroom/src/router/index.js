@@ -7,12 +7,11 @@ import ContentTable from "@/components/ContentTable";
 
 Vue.use(Router);
 
-
 // 登录网址之后直接尝试进入表格页
 // 路由守卫中判断是否登录，如果不是，跳转到 注册页面
 // 注册完成后再跳转到表格页
 export default new Router({
-    mode: 'history',
+    mode: "history",
     routes: [
         {
             path: "/",
@@ -22,16 +21,16 @@ export default new Router({
                 {
                     path: "login",
                     name: "login",
-                    component: Login,
+                    component: Login
                 },
                 {
-                    path: "content",
+                    path: "contentTable",
                     name: "contentTable",
-                    component: ContentTable,
-                },
-            ],
+                    component: ContentTable
+                }
+            ]
         },
 
-        { path: '*', component: NotFound },
+        { path: "*", component: NotFound }
     ]
 });
